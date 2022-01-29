@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool winnerOfGame(string s)
+    {
+        int n=s.size();
+        int count_a=0;
+        int count_b=0;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='A')
+            {
+                int curr=0;
+               while(s[i]!='B'&&i<n)
+               {
+                   i++;
+                   curr++;
+               }
+                cout<<curr<<endl;
+                if(curr>2)
+                    count_a+=curr-2;
+                i--;
+                
+            }
+        }
+         for(int i=0;i<n;i++)
+        {
+            if(s[i]=='B')
+            {
+                int curr=0;
+               while(s[i]!='A'&&i<n)
+               {
+                   i++;
+                   curr++;
+               }
+                if(curr>2)
+                    count_b+=curr-2;
+                i--;
+                
+            }
+        }
+        if(count_a>count_b)
+            return true;
+        else
+            return false;
+        
+        
+    }
+};
