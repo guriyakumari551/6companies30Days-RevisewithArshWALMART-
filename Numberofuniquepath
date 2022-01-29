@@ -1,0 +1,53 @@
+//Initial template for C++
+#include<bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+//User function template in C++
+
+class Solution
+{
+    public:
+    int helper(int i,int j,int n,int m,vector<vector<int>>&dp)
+    {
+        if(i>n||j>m)
+        return 0;
+        if(i==n&&j==m)
+        return 1;
+        if(dp[i][j]!=-1)
+        return dp[i][j];
+        return dp[i][j]=helper(i+1,j,n,m,dp)+helper(i,j+1,n,m,dp);
+        
+    }
+    //Function to find total number of unique paths.
+    int NumberOfPath(int a, int b)
+    {
+        vector<vector<int>>dp(a,vector<int>(b,-1));
+        int i=0;
+        int j=0;
+        int n=a-1;
+        int m=b-1;
+        int res=helper(i,j,n,m,dp);
+        return res;
+    }
+};
+
+
+// { Driver Code Starts.
+int main()
+{
+    //taking total testcases
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        //taking dimensions of the matrix
+        int a,b;
+        cin>>a>>b;
+        Solution ob;
+        //calling NumberOfPath() function
+        cout << ob.NumberOfPath(a,b) << endl;
+    }
+}
+
+  // } Driver Code Ends
