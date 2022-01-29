@@ -1,0 +1,58 @@
+class Solution {
+public:
+    bool stoneGame(vector<int>& piles)
+    {
+        int n=piles.size();
+        int start=0;
+        int end=n-1;
+        int count=1;
+        int alice_stone=0;
+        int bob_stone=0;
+        while(start<=end)
+        {
+            if(count&1)
+            {
+                if(piles[start]<=piles[end])
+                {
+                    // cout<<piles[end]<<endl;
+                    alice_stone+=piles[end];
+                    end--;
+                }
+                else
+                {
+                    // cout<<piles[start]<<endl;
+                    alice_stone+=piles[start];
+                    start++;
+                }
+                
+                //alice chalega
+                
+            }
+            else
+            {
+                //bob chalega
+                 if(piles[start]<=piles[end])
+                {
+                     // cout<<piles[end]<<endl;
+                    bob_stone+=piles[end];
+                    end--;
+                }
+                else
+                {
+                    // cout<<piles[start]<<endl;
+                   bob_stone+=piles[start];
+                    start++;
+                }
+                
+            }
+                if(alice_stone>bob_stone)
+                {
+                    cout<<alice_stone<<endl;
+                    cout<<bob_stone<<endl;
+                    return true;
+                }
+        }
+            return false;
+        
+    }
+};
